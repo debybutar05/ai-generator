@@ -4,21 +4,8 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "env": {
-    "OPENAI_API_KEY": {
-      "description": "OpenAI API Key",
-      "required": true
-    },
-    "HUGGINGFACE_API_KEY": {
-      "description": "Hugging Face API Key",
-      "required": true
-    },
-    "NEXT_PUBLIC_APP_URL": {
-      "description": "Application URL",
-      "required": false
-    },
-    "MOCK_MODE": {
-      "description": "Enable mock mode for testing",
-      "required": false
-    }
+    "HUGGINGFACE_API_KEY": "@huggingface-api-key",
+    "NEXT_PUBLIC_APP_URL": "@next-public-app-url",
+    "MOCK_MODE": "false"
   }
 }
