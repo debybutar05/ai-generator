@@ -1,0 +1,18 @@
+SHORT TEST TRANSCRIPT
+
+Product: Team Dashboard
+Target: Remote teams (50-500 employees)
+
+Key Features:
+1. Individual task tracking
+2. Team capacity overview
+3. Weekly automated reports
+4. Time allocation charts
+5. Project status tracking
+
+UI: Clean, minimal, green/blue colors
+Timeline: 3 months MVP
+Tech: PostgreSQL, REST API, AWS hosting
+Privacy: No keystroke tracking, user data deletable
+
+Success: 70% adoption, 5-10 min daily usage

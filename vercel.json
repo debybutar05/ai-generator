@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "nodeVersion": "18.x",
+  "env": [
+    {
+      "key": "OPENAI_API_KEY",
+      "value": "@openai-api-key",
+      "type": "secret"
+    },
+    {
+      "key": "NEXT_PUBLIC_APP_URL",
+      "type": "system"
+    }
+  ]
+}
