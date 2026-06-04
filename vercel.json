@@ -2,10 +2,5 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "nextjs",
-  "env": {
-    "HUGGINGFACE_API_KEY": "@huggingface-api-key",
-    "NEXT_PUBLIC_APP_URL": "@next-public-app-url",
-    "MOCK_MODE": "false"
-  }
+  "framework": "nextjs"
 }
