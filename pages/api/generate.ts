@@ -9,12 +9,24 @@ const hf = !MOCK_MODE ? new HfInference(process.env.HUGGINGFACE_API_KEY) : null
 // Mistral 7B Instruct model on Hugging Face
 const MODEL_ID = 'mistralai/Mistral-7B-Instruct-v0.2'
 
+// Log configuration on startup
+console.log('=== API Configuration ===')
+console.log('MOCK_MODE:', MOCK_MODE)
+console.log('HUGGINGFACE_API_KEY exists:', !!process.env.HUGGINGFACE_API_KEY)
+console.log('HUGGINGFACE_API_KEY length:', process.env.HUGGINGFACE_API_KEY?.length || 0)
+console.log('Using real API:', !MOCK_MODE)
+console.log('=========================')
+
 interface GenerateResponse {
   prd?: string
   userStories?: string
   functionalRequirements?: string
   uiWireframes?: string
   error?: string
+  _debug?: {
+    mockMode: boolean
+    hasApiKey: boolean
+  }
 }
 
 const generatePrompts = {
@@ -386,13 +398,18 @@ export default async function handler(
     // Use mock data if API key is not configured or in mock mode
     if (MOCK_MODE) {
       console.log('⚠️ Running in MOCK MODE - Using sample data for demonstration')
+      console.log('⚠️ Reason: MOCK_MODE=' + process.env.MOCK_MODE + ', Has API Key: ' + !!process.env.HUGGINGFACE_API_KEY)
       const mockData = getMockData(transcript)
       
       return res.status(200).json({
-        prd: mockData.prd,
-        userStories: mockData.userStories,
-        functionalRequirements: mockData.functionalRequirements,
-        uiWireframes: mockData.uiWireframes,
+        prd: '⚠️ DEMO MODE - Set HUGGINGFACE_API_KEY in environment variables for real AI generation\n\n' + mockData.prd,
+        userStories: '⚠️ DEMO MODE - Set HUGGINGFACE_API_KEY in environment variables for real AI generation\n\n' + mockData.userStories,
+        functionalRequirements: '⚠️ DEMO MODE - Set HUGGINGFACE_API_KEY in environment variables for real AI generation\n\n' + mockData.functionalRequirements,
+        uiWireframes: '⚠️ DEMO MODE - Set HUGGINGFACE_API_KEY in environment variables for real AI generation\n\n' + mockData.uiWireframes,
+        _debug: {
+          mockMode: MOCK_MODE,
+          hasApiKey: !!process.env.HUGGINGFACE_API_KEY
+        }
       })
     }
 
